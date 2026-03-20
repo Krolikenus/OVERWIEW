@@ -2,135 +2,147 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Infra Admin | Michał</title>
+<title>Michał Kamiński | IT Infrastructure</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 
 body {
     margin: 0;
-    font-family: monospace;
-    background: radial-gradient(circle at 20% 20%, #0f172a, #020617);
-    color: #c9d1d9;
+    font-family: 'Segoe UI', monospace;
+    background: #020617;
+    color: #e2e8f0;
+    overflow-x: hidden;
 }
 
-/* NAV */
-nav {
-    padding: 15px 30px;
-    border-bottom: 1px solid #161b22;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/* ===== BACKGROUND ANIMATION ===== */
+.bg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, #0f172a, #020617);
+    z-index: -1;
 }
 
-.menu a {
-    margin-left: 20px;
-    cursor: pointer;
-    color: #8b949e;
-    text-decoration: none;
-}
-
-.menu a:hover {
-    color: #22d3ee;
-}
-
-.status-dot {
-    width: 10px;
-    height: 10px;
-    background: #22c55e;
-    border-radius: 50%;
-    display: inline-block;
-    margin-right: 8px;
-    box-shadow: 0 0 10px #22c55e;
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    50% { box-shadow: 0 0 20px #22c55e; }
-}
-
-/* HERO */
-.hero {
-    display: flex;
-    justify-content: space-between;
-    padding: 60px 40px;
-}
-
-.hero-left h1 {
-    font-size: 42px;
-}
-
-.tagline {
-    color: #22d3ee;
-}
-
-/* CORE */
-.core {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    border: 1px solid #22d3ee33;
-    box-shadow: 0 0 60px #22d3ee55;
-    position: relative;
-}
-
-.core::before {
-    content: "";
+.dot {
     position: absolute;
-    inset: 20px;
-    border-radius: 50%;
-    border: 1px dashed #22d3ee55;
-    animation: rotate 10s linear infinite;
+    width: 2px;
+    height: 2px;
+    background: #22d3ee;
+    animation: float 10s infinite linear;
 }
 
-@keyframes rotate {
-    100% { transform: rotate(360deg); }
+@keyframes float {
+    from { transform: translateY(100vh); }
+    to { transform: translateY(-10vh); }
 }
 
-/* SECTIONS */
-.section {
+/* ===== NAV ===== */
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+}
+
+.status {
+    color: #22c55e;
+}
+
+/* ===== HERO ===== */
+.hero {
+    padding: 80px 40px;
+    max-width: 900px;
+}
+
+.hero h1 {
+    font-size: 60px;
+    margin: 0;
+}
+
+.hero span {
+    color: #22d3ee;
+}
+
+.hero p {
+    margin-top: 10px;
+    color: #94a3b8;
+}
+
+/* ===== BUTTONS ===== */
+.buttons {
+    margin-top: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 16px;
+    margin-right: 10px;
+    border: 1px solid #22d3ee;
+    color: #22d3ee;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #22d3ee;
+    color: black;
+}
+
+/* ===== GRID ===== */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+    gap: 20px;
     padding: 40px;
 }
 
-/* CARDS */
+/* ===== CARD ===== */
 .card {
-    background: rgba(13,17,23,0.6);
+    background: rgba(15, 23, 42, 0.7);
     border: 1px solid #22d3ee22;
     padding: 20px;
     border-radius: 12px;
-    margin-top: 15px;
     transition: 0.3s;
 }
 
 .card:hover {
-    border: 1px solid #22d3ee;
-    transform: translateY(-5px);
+    transform: translateY(-6px);
+    box-shadow: 0 10px 30px #22d3ee22;
 }
 
-/* TERMINAL */
+/* ===== TERMINAL ===== */
 .terminal {
     background: black;
     padding: 10px;
     border-radius: 6px;
     font-size: 13px;
-}
-
-/* BUTTONS */
-.btn {
     margin-top: 10px;
-    display: inline-block;
-    padding: 6px 10px;
-    border: 1px solid #22d3ee;
-    cursor: pointer;
-    font-size: 12px;
 }
 
-.btn:hover {
-    background: #22d3ee22;
+.green { color: #22c55e; }
+.blue { color: #22d3ee; }
+
+/* ===== EXPERIENCE ===== */
+.exp {
+    padding: 40px;
 }
 
-.hidden {
-    display: none;
+.exp h2 {
+    margin-bottom: 20px;
+}
+
+.exp-item {
+    margin-bottom: 20px;
+    border-left: 2px solid #22d3ee;
+    padding-left: 15px;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    text-align: center;
+    padding: 40px;
+    color: #6b7280;
 }
 
 </style>
@@ -138,117 +150,100 @@ nav {
 
 <body>
 
-<nav>
-    <div><span class="status-dot"></span> infra.online</div>
+<div class="bg" id="bg"></div>
 
-    <div class="menu">
-        <a onclick="show('home')">Home</a>
-        <a onclick="show('exp')">Experience</a>
-        <a onclick="show('projects')">Projects</a>
-        <a onclick="show('console')">Console</a>
-    </div>
+<nav>
+    <div class="status">● system online</div>
+    <div>IT Infrastructure Engineer</div>
 </nav>
 
-<!-- HOME -->
-<div id="home" class="section">
+<section class="hero">
+    <h1>Michał <span>Kamiński</span></h1>
+    <p>Infrastructure • Virtualization • Networking • Automation</p>
 
-<div class="hero">
-    <div class="hero-left">
-        <h1>Michał Kamiński</h1>
-        <p class="tagline">IT Administrator / Infrastructure</p>
+    <p>
+        I design, maintain and secure enterprise IT environments.  
+        Focused on reliability, performance and automation across production systems.
+    </p>
+
+    <div class="buttons">
+        <a href="#" class="btn">GitHub</a>
+        <a href="#" class="btn">Download CV</a>
     </div>
+</section>
 
-    <div class="core"></div>
+<section class="grid">
+
+<div class="card">
+<h3>System Status</h3>
+<p style="color:#22c55e;font-size:28px;">99.98%</p>
+<p>All services operational</p>
 </div>
 
 <div class="card">
-    <h3>System Status</h3>
-    <p style="color:#22c55e;font-size:24px;">99.98%</p>
-    <p>All systems operational</p>
+<h3>Infrastructure</h3>
+<p>Hyper-V Clusters</p>
+<p>SQL Server</p>
+<p>Active Directory</p>
+<p>VPN / Firewall</p>
 </div>
 
+<div class="card">
+<h3>Live Console</h3>
+<div class="terminal">
+<pre>
+<span class="green">[root@dc]</span>$ check status
+
+<span class="blue">AD:</span> running
+<span class="blue">SQL:</span> active
+<span class="blue">Backups:</span> completed
+<span class="blue">Replication:</span> OK
+</pre>
+</div>
 </div>
 
-<!-- EXPERIENCE -->
-<div id="exp" class="section hidden">
+<div class="card">
+<h3>Projects</h3>
+<p>• Hyper-V cluster migration</p>
+<p>• SQL upgrade 2014 → 2022</p>
+<p>• Backup automation system</p>
+<p>• Network security hardening</p>
+</div>
+
+</section>
+
+<section class="exp">
 
 <h2>Experience</h2>
 
-<div class="card">
-<h3>IT Administrator – Futuriti</h3>
-<p>2024 – Present | Kraków</p>
+<div class="exp-item">
+<strong>IT Administrator – Futuriti</strong><br>
+2024 – Present | Kraków<br><br>
 
-<p>
 • Windows Server, Active Directory, Hyper-V<br>
 • SQL Server management (SSMS)<br>
 • Comarch ERP (Optima, XL, HRM)<br>
 • Backup systems & automation<br>
 • Remote support & incident handling<br>
 • VPS & infrastructure management
-</p>
-
-<div class="btn" onclick="alert('Znasz się na robocie 😎')">Check Skills</div>
-
 </div>
 
-</div>
+</section>
 
-<!-- PROJECTS -->
-<div id="projects" class="section hidden">
-
-<h2>Projects</h2>
-
-<div class="card">
-• Hyper-V cluster migration<br>
-• SQL upgrade 2014 → 2022<br>
-• Backup automation scripts<br>
-• Network security hardening
-</div>
-
-</div>
-
-<!-- CONSOLE -->
-<div id="console" class="section hidden">
-
-<h2>Console</h2>
-
-<div class="terminal" id="consoleBox">
-Type "help"
-</div>
-
-<input id="cmd" placeholder="type command..." style="width:100%;padding:10px;background:black;color:white;border:none;">
-
-</div>
+<footer>
+uptime: 99.98% | monitoring: active | last incident: resolved
+</footer>
 
 <script>
 
-function show(id) {
-    document.querySelectorAll('.section').forEach(s => s.classList.add('hidden'));
-    document.getElementById(id).classList.remove('hidden');
+/* BACKGROUND PARTICLES */
+for(let i=0;i<80;i++){
+    let dot = document.createElement("div");
+    dot.className="dot";
+    dot.style.left=Math.random()*100+"%";
+    dot.style.animationDuration=(5+Math.random()*10)+"s";
+    document.getElementById("bg").appendChild(dot);
 }
-
-/* CLI */
-document.getElementById("cmd").addEventListener("keydown", function(e){
-    if(e.key === "Enter") {
-        let val = this.value;
-        let out = document.getElementById("consoleBox");
-
-        if(val === "help") {
-            out.innerHTML += "<br>commands: help, status, projects";
-        }
-        else if(val === "status") {
-            out.innerHTML += "<br>All systems operational";
-        }
-        else if(val === "projects") {
-            out.innerHTML += "<br>Hyper-V, SQL, Backup automation";
-        }
-        else {
-            out.innerHTML += "<br>unknown command";
-        }
-
-        this.value = "";
-    }
-});
 
 </script>
 
