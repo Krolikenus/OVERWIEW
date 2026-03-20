@@ -2,25 +2,17 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Michał Kamiński | IT Infrastructure</title>
+<title>Michał Kamiński</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 
 body {
     margin: 0;
-    font-family: 'Segoe UI', monospace;
+    font-family: 'Inter', monospace;
     background: #020617;
     color: #e2e8f0;
-}
-
-/* BACKGROUND */
-.bg {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 30% 20%, #0f172a, #020617);
-    z-index: -1;
+    overflow-x: hidden;
 }
 
 /* NAV */
@@ -28,17 +20,24 @@ nav {
     display: flex;
     justify-content: space-between;
     padding: 20px 40px;
-    border-bottom: 1px solid #111827;
+    color: #94a3b8;
 }
 
 /* HERO */
 .hero {
-    padding: 80px 40px 40px;
-    max-width: 900px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 100px 60px;
+}
+
+/* LEFT */
+.hero-left {
+    max-width: 600px;
 }
 
 .hero h1 {
-    font-size: 56px;
+    font-size: 72px;
     margin: 0;
 }
 
@@ -47,86 +46,152 @@ nav {
 }
 
 .hero p {
+    margin-top: 15px;
     color: #94a3b8;
-    margin-top: 10px;
+}
+
+/* TAGS */
+.tags span {
+    display: inline-block;
+    margin: 5px;
+    padding: 6px 10px;
+    border: 1px solid #22d3ee33;
+    border-radius: 6px;
+    font-size: 12px;
+}
+
+/* RIGHT CORE (jak kula u kolegi) */
+.core {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 1px solid #22d3ee33;
+    position: relative;
+    box-shadow: 0 0 80px #22d3ee33;
+}
+
+.core::before {
+    content: "";
+    position: absolute;
+    inset: 20px;
+    border-radius: 50%;
+    border: 1px dashed #22d3ee55;
+    animation: rotate 15s linear infinite;
+}
+
+.core::after {
+    content: "";
+    position: absolute;
+    inset: 60px;
+    border-radius: 50%;
+    background: #22d3ee22;
+    box-shadow: 0 0 50px #22d3ee;
+}
+
+@keyframes rotate {
+    100% { transform: rotate(360deg); }
 }
 
 /* SECTION */
 .section {
-    padding: 40px;
-    max-width: 1200px;
-    margin: auto;
+    padding: 80px 60px;
 }
 
 /* GRID */
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
     gap: 20px;
 }
 
 /* CARD */
 .card {
-    background: rgba(15,23,42,0.7);
+    background: #020617;
     border: 1px solid #22d3ee22;
-    padding: 20px;
+    padding: 25px;
     border-radius: 12px;
     transition: 0.3s;
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px #22d3ee22;
+    transform: translateY(-6px);
+    border: 1px solid #22d3ee;
 }
 
-/* TITLE */
-h2 {
-    margin-bottom: 20px;
+/* EXPERIENCE */
+.exp {
+    max-width: 800px;
 }
 
 /* TERMINAL */
 .terminal {
     background: black;
-    padding: 10px;
-    border-radius: 6px;
-    font-size: 13px;
+    padding: 15px;
+    border-radius: 8px;
     margin-top: 10px;
 }
 
-.green { color: #22c55e; }
-.blue { color: #22d3ee; }
-
-/* FOOTER */
-footer {
-    text-align: center;
-    padding: 40px;
-    color: #6b7280;
-}
+.green { color:#22c55e; }
+.blue { color:#22d3ee; }
 
 </style>
 </head>
 
 <body>
 
-<div class="bg"></div>
-
 <nav>
-    <div style="color:#22c55e;">● system online</div>
-    <div>IT Infrastructure Engineer</div>
+<div>● system online</div>
+<div>IT Infrastructure Engineer</div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
-    <h1>Michał <span>Kamiński</span></h1>
-    <p>Infrastructure • Virtualization • Networking • Automation</p>
 
-    <p>
-        IT Administrator focused on managing enterprise environments,
-        virtualization, databases and business systems.
-    </p>
+<div class="hero-left">
+<h1>Michał <span>Kamiński</span></h1>
+
+<p>Infrastructure • Virtualization • Networking • Automation</p>
+
+<p>
+IT Administrator managing enterprise systems, virtualization,
+SQL environments and Comarch ERP platforms.
+</p>
+
+<div class="tags">
+<span>Hyper-V</span>
+<span>SQL</span>
+<span>Active Directory</span>
+<span>Comarch ERP</span>
+</div>
+
+</div>
+
+<div class="core"></div>
+
 </section>
 
-<!-- STATUS -->
+<!-- EXPERIENCE -->
+<section class="section">
+<h2>Experience</h2>
+
+<div class="exp">
+
+<div class="card">
+<strong>IT Administrator – Futuriti</strong><br><br>
+
+Managing infrastructure, virtualization and databases in production environments.
+
+• Windows Server / AD / Hyper-V  
+• SQL Server + SSMS  
+• Comarch ERP (Optima, XL, HRM)  
+• Backup & automation  
+• Monitoring & incident response  
+
+</div>
+
+</div>
+</section>
+
+<!-- SYSTEM -->
 <section class="section">
 <h2>System Overview</h2>
 
@@ -139,20 +204,18 @@ footer {
 
 <div class="card">
 <h3>Infrastructure</h3>
-<p>Hyper-V</p>
-<p>Active Directory</p>
-<p>SQL Server</p>
+<p>Hyper-V / AD / SQL</p>
 </div>
 
 <div class="card">
-<h3>Live Console</h3>
+<h3>Console</h3>
 <div class="terminal">
 <pre>
-[root@infra]$ status
+<span class="green">[root@infra]</span>$ status
 
-AD: OK
-SQL: OK
-BACKUP: OK
+<span class="blue">AD:</span> OK
+<span class="blue">SQL:</span> OK
+<span class="blue">BACKUP:</span> OK
 </pre>
 </div>
 </div>
@@ -160,86 +223,19 @@ BACKUP: OK
 </div>
 </section>
 
-<!-- SKILLS -->
-<section class="section">
-<h2>Skills</h2>
-
-<div class="grid">
-
-<div class="card">
-<h3>Systems</h3>
-<p>Windows Server</p>
-<p>Active Directory</p>
-<p>Hyper-V</p>
-</div>
-
-<div class="card">
-<h3>Databases</h3>
-<p>SQL Server</p>
-<p>SSMS</p>
-<p>Backup / Restore</p>
-</div>
-
-<div class="card">
-<h3>Business Systems</h3>
-<p>Comarch ERP Optima</p>
-<p>Comarch XL</p>
-<p>Comarch HRM</p>
-</div>
-
-<div class="card">
-<h3>Networking</h3>
-<p>VPN</p>
-<p>Firewall</p>
-<p>Monitoring</p>
-</div>
-
-</div>
-</section>
-
-<!-- EXPERIENCE -->
-<section class="section">
-<h2>Experience</h2>
-
-<div class="card">
-<strong>IT Administrator – Futuriti</strong><br>
-2024 – Present | Kraków<br><br>
-
-Managing Windows environments, virtualization infrastructure and SQL databases.
-Supporting business systems and ensuring system reliability.
-
-</div>
-
-</section>
-
-<!-- PRO TIPS -->
+<!-- TIPS -->
 <section class="section">
 <h2>Admin Tips</h2>
 
 <div class="grid">
 
-<div class="card">
-💡 Always separate SQL data and logs on different disks
-</div>
-
-<div class="card">
-💡 Monitor backups daily – not when disaster happens
-</div>
-
-<div class="card">
-💡 Never trust default firewall rules
-</div>
-
-<div class="card">
-💡 Document everything – future you will thank you
-</div>
+<div class="card">Separate SQL data & logs</div>
+<div class="card">Always verify backups</div>
+<div class="card">Monitor before users complain</div>
+<div class="card">Document everything</div>
 
 </div>
 </section>
-
-<footer>
-infrastructure managed • systems secured • uptime maintained
-</footer>
 
 </body>
 </html>
