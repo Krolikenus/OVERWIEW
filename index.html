@@ -20,6 +20,18 @@ nav {
     border-bottom: 1px solid #161b22;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+.menu a {
+    margin-left: 20px;
+    cursor: pointer;
+    color: #8b949e;
+    text-decoration: none;
+}
+
+.menu a:hover {
+    color: #22d3ee;
 }
 
 .status-dot {
@@ -34,64 +46,31 @@ nav {
 }
 
 @keyframes pulse {
-    0% { box-shadow: 0 0 5px #22c55e; }
     50% { box-shadow: 0 0 20px #22c55e; }
-    100% { box-shadow: 0 0 5px #22c55e; }
 }
 
 /* HERO */
 .hero {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 80px 40px;
+    padding: 60px 40px;
 }
 
 .hero-left h1 {
-    font-size: 48px;
-    margin: 0;
+    font-size: 42px;
 }
 
 .tagline {
     color: #22d3ee;
-    margin-top: 10px;
-    font-size: 18px;
 }
 
-.badges span {
-    display: inline-block;
-    margin: 5px;
-    padding: 6px 10px;
-    border: 1px solid #22d3ee44;
-    border-radius: 6px;
-    font-size: 12px;
-    color: #22d3ee;
-    transition: 0.3s;
-}
-
-.badges span:hover {
-    background: #22d3ee22;
-}
-
-.desc {
-    margin-top: 15px;
-    color: #8b949e;
-    max-width: 500px;
-}
-
-/* CORE SYSTEM (WOW ELEMENT) */
-.hero-right {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
+/* CORE */
 .core {
-    width: 220px;
-    height: 220px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
     border: 1px solid #22d3ee33;
-    box-shadow: 0 0 80px #22d3ee55;
+    box-shadow: 0 0 60px #22d3ee55;
     position: relative;
 }
 
@@ -104,70 +83,54 @@ nav {
     animation: rotate 10s linear infinite;
 }
 
-.core::after {
-    content: "";
-    position: absolute;
-    inset: 60px;
-    border-radius: 50%;
-    background: #22d3ee22;
-    box-shadow: 0 0 40px #22d3ee;
-}
-
 @keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    100% { transform: rotate(360deg); }
 }
 
-/* GRID */
-.grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+/* SECTIONS */
+.section {
     padding: 40px;
 }
 
 /* CARDS */
 .card {
-    background: rgba(13, 17, 23, 0.6);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(34, 211, 238, 0.1);
+    background: rgba(13,17,23,0.6);
+    border: 1px solid #22d3ee22;
     padding: 20px;
-    border-radius: 14px;
+    border-radius: 12px;
+    margin-top: 15px;
     transition: 0.3s;
 }
 
 .card:hover {
     border: 1px solid #22d3ee;
-    box-shadow: 0 10px 30px #22d3ee22;
-    transform: translateY(-6px);
+    transform: translateY(-5px);
 }
 
 /* TERMINAL */
 .terminal {
-    background: #000;
-    padding: 15px;
-    border-radius: 8px;
+    background: black;
+    padding: 10px;
+    border-radius: 6px;
     font-size: 13px;
-    border: 1px solid #22d3ee22;
-    box-shadow: inset 0 0 20px #000;
-    height: 140px;
-    overflow-y: auto;
 }
 
-.green { color: #22c55e; }
-.blue { color: #58a6ff; }
-
-/* METRICS */
-.metric {
-    font-size: 32px;
-    color: #22c55e;
+/* BUTTONS */
+.btn {
+    margin-top: 10px;
+    display: inline-block;
+    padding: 6px 10px;
+    border: 1px solid #22d3ee;
+    cursor: pointer;
+    font-size: 12px;
 }
 
-/* FOOTER */
-footer {
-    text-align: center;
-    padding: 30px;
-    color: #6e7681;
+.btn:hover {
+    background: #22d3ee22;
+}
+
+.hidden {
+    display: none;
 }
 
 </style>
@@ -177,99 +140,116 @@ footer {
 
 <nav>
     <div><span class="status-dot"></span> infra.online</div>
-    <div>IT Administrator</div>
+
+    <div class="menu">
+        <a onclick="show('home')">Home</a>
+        <a onclick="show('exp')">Experience</a>
+        <a onclick="show('projects')">Projects</a>
+        <a onclick="show('console')">Console</a>
+    </div>
 </nav>
 
-<section class="hero">
+<!-- HOME -->
+<div id="home" class="section">
+
+<div class="hero">
     <div class="hero-left">
         <h1>Michał Kamiński</h1>
-        <p class="tagline">Infrastructure Engineer</p>
-
-        <div class="badges">
-            <span>Hyper-V</span>
-            <span>SQL Server</span>
-            <span>Networking</span>
-            <span>Automation</span>
-        </div>
-
-        <p class="desc">
-            Designing and maintaining enterprise infrastructure, ensuring high availability,
-            performance, and security across production environments.
-        </p>
+        <p class="tagline">IT Administrator / Infrastructure</p>
     </div>
 
-    <div class="hero-right">
-        <div class="core"></div>
-    </div>
-</section>
+    <div class="core"></div>
+</div>
 
-<section class="grid">
+<div class="card">
+    <h3>System Status</h3>
+    <p style="color:#22c55e;font-size:24px;">99.98%</p>
+    <p>All systems operational</p>
+</div>
 
-    <div class="card">
-        <h3>System Status</h3>
-        <div class="metric">99.98%</div>
-        <p>Uptime (last 30 days)</p>
-    </div>
+</div>
 
-    <div class="card">
-        <h3>Infrastructure</h3>
-        <p>Hyper-V Clusters</p>
-        <p>SQL Servers</p>
-        <p>VPN / Firewall</p>
-    </div>
+<!-- EXPERIENCE -->
+<div id="exp" class="section hidden">
 
-    <div class="card">
-        <h3>Live Console</h3>
-        <div class="terminal">
-<pre>
-<span class="green">[root@dc]</span>$ check status
+<h2>Experience</h2>
 
-<span class="blue">AD:</span> running
-<span class="blue">SQL:</span> active
-<span class="blue">Backups:</span> completed
-<span class="blue">Replication:</span> OK
-</pre>
-        </div>
-    </div>
+<div class="card">
+<h3>IT Administrator – Futuriti</h3>
+<p>2024 – Present | Kraków</p>
 
-    <div class="card">
-        <h3>Projects</h3>
-        <p>• Hyper-V cluster migration</p>
-        <p>• SQL 2014 → 2022 upgrade</p>
-        <p>• Backup automation system</p>
-        <p>• Network security hardening</p>
-    </div>
+<p>
+• Windows Server, Active Directory, Hyper-V<br>
+• SQL Server management (SSMS)<br>
+• Comarch ERP (Optima, XL, HRM)<br>
+• Backup systems & automation<br>
+• Remote support & incident handling<br>
+• VPS & infrastructure management
+</p>
 
-    <div class="card">
-        <h3>Live Logs</h3>
-        <div class="terminal" id="logs"></div>
-    </div>
+<div class="btn" onclick="alert('Znasz się na robocie 😎')">Check Skills</div>
 
-</section>
+</div>
 
-<footer>
-    uptime: 99.98% | monitoring: active | last incident: resolved
-</footer>
+</div>
+
+<!-- PROJECTS -->
+<div id="projects" class="section hidden">
+
+<h2>Projects</h2>
+
+<div class="card">
+• Hyper-V cluster migration<br>
+• SQL upgrade 2014 → 2022<br>
+• Backup automation scripts<br>
+• Network security hardening
+</div>
+
+</div>
+
+<!-- CONSOLE -->
+<div id="console" class="section hidden">
+
+<h2>Console</h2>
+
+<div class="terminal" id="consoleBox">
+Type "help"
+</div>
+
+<input id="cmd" placeholder="type command..." style="width:100%;padding:10px;background:black;color:white;border:none;">
+
+</div>
 
 <script>
-const logs = [
-"[INFO] Backup completed",
-"[OK] Replication synced",
-"[INFO] New VM deployed",
-"[OK] Firewall rules applied",
-"[INFO] Monitoring check passed",
-"[OK] Domain replication synced",
-"[INFO] SQL backup verified"
-];
 
-let i = 0;
+function show(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.add('hidden'));
+    document.getElementById(id).classList.remove('hidden');
+}
 
-setInterval(() => {
-    const el = document.getElementById("logs");
-    el.innerHTML += logs[i] + "<br>";
-    el.scrollTop = el.scrollHeight;
-    i = (i + 1) % logs.length;
-}, 1200);
+/* CLI */
+document.getElementById("cmd").addEventListener("keydown", function(e){
+    if(e.key === "Enter") {
+        let val = this.value;
+        let out = document.getElementById("consoleBox");
+
+        if(val === "help") {
+            out.innerHTML += "<br>commands: help, status, projects";
+        }
+        else if(val === "status") {
+            out.innerHTML += "<br>All systems operational";
+        }
+        else if(val === "projects") {
+            out.innerHTML += "<br>Hyper-V, SQL, Backup automation";
+        }
+        else {
+            out.innerHTML += "<br>unknown command";
+        }
+
+        this.value = "";
+    }
+});
+
 </script>
 
 </body>
